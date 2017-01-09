@@ -1,0 +1,10 @@
+<ul class="nav flex-column">
+    {% for nav in site.data.toc %}
+        {% capture active %}
+            {% if page.url == nav.path or page.url == nav.path + "/" %}active{% endif %}{% endcapture %}
+        <li class="nav-item">
+            <a class="nav-link {{ active }}" href="{{ nav.path }}">{{ nav.title }}</a>
+        </li>
+    {% endfor %}
+</ul>
+

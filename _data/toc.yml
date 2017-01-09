@@ -1,0 +1,12 @@
+- title: Home
+  path: /
+- title: ILS Extract
+  path: /ils-extract
+- title: Argot
+  path: /argot
+- title: Spofford
+  path: /spofford
+- title: Solr
+  path: /solr
+- title: Argon Engine
+  path: /argon
