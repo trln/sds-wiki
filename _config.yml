@@ -1,3 +1,4 @@
-url: http://trln.github.io/sds-wiki
+url: https://trln.github.io/sds-wiki
+baseurl: /sds-wiki
 sass:
   sass_dir: assets/_scss
