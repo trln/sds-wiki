@@ -1,0 +1,18 @@
+# This file controls how argot fields will be indexed in solr
+# All fields listed will be indexed.
+# For field types, see https://github.com/trln/solr6_test_conf/blob/master/configure/stock.yaml
+# Any field with a "stored" attribute will be stored as well as indexed
+# Any field with a "single" attribute will not allow multiple values
+# Any argot field not listed in this document will be stored, unindexed with a "_a" appended to the field name
+
+
+#ids
+
+
+
+
+
+
+
+
+

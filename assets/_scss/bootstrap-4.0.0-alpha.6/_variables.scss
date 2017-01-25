@@ -95,25 +95,25 @@
 $white:  #fff !default;
 $black:  #000 !default;
 $red:    #d9534f !default;
-$orange: #ff6d22 !default;
+$orange: #f0ad4e !default;
 $yellow: #ffd500 !default;
 $green:  #5cb85c !default;
 $blue:   #0275d8 !default;
-$teal:   #1e9d8b !default;
-$pink:   #c21dac !default;
-$purple: #490e6f !default;
+$teal:   #5bc0de !default;
+$pink:   #ff5b77 !default;
+$purple: #613d7c !default;
 
 // Create grayscale
-$gray-dark:                 #333333 !default;
-$gray:                      #515157 !default;
-$gray-light:                #666666 !default;
-$gray-lighter:              lighten($gray-light, 10%) !default;
-$gray-lightest:             #ffffff !default;
+$gray-dark:                 #292b2c !default;
+$gray:                      #464a4c !default;
+$gray-light:                #636c72 !default;
+$gray-lighter:              #eceeef !default;
+$gray-lightest:             #f7f7f9 !default;
 
 // Reassign color vars to semantic color scheme
-$brand-primary:             $purple !default;
-$brand-success:             $teal !default;
-$brand-info:                $pink !default;
+$brand-primary:             $blue !default;
+$brand-success:             $green !default;
+$brand-info:                $teal !default;
 $brand-warning:             $orange !default;
 $brand-danger:              $red !default;
 $brand-inverse:             $gray-dark !default;
@@ -191,7 +191,7 @@ $inverse-color: $gray-lighter !default;
 //
 // Style anchor elements.
 
-$link-color:            $brand-success !default;
+$link-color:            $brand-primary !default;
 $link-decoration:       none !default;
 $link-hover-color:      darken($link-color, 15%) !default;
 $link-hover-decoration: underline !default;
@@ -908,7 +908,7 @@ $breadcrumb-padding-y:          .75rem !default;
 $breadcrumb-padding-x:          1rem !default;
 $breadcrumb-item-padding:       .5rem !default;
 
-$breadcrumb-bg:                 transparent !default;
+$breadcrumb-bg:                 $gray-lighter !default;
 $breadcrumb-divider-color:      $gray-light !default;
 $breadcrumb-active-color:       $gray-light !default;
 $breadcrumb-divider:            "/" !default;
