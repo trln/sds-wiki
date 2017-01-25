@@ -10,21 +10,33 @@
                     {{ include.key }}_*_v <em>where * is the 3 letter lang code</em>
                 {% else %}
                     {% if include.field.indexed %}
-                        {{ include.key }}_{{ include.field.type }}
+                        {% if include.field.solr_attr contains 'sort' %}
+                            {% if include.field.type == "i" || include.field.type == "float" || include.field.type == "long" || include.field.type == "double" %}
+                                {{ include.key }}_isort
+                            {% else %}
+                                {{ include.key }}_ssort
+                            {% endif %}
+                        {% else %}
+                            {{ include.key }}_{{ include.field.type }}
+                        {% endif %}
                     {% else %}
                         Not indexed
                     {% endif %}
                 {% endif %}
             </td>
             <td>
-                {% if include.field.multi %}
-                    {{ include.key }}_a
-                    {% if include.field.type == 'gvo' %}
-                        <br>
-                        {{ include.key }}_v_a
+                {% if include.field.solr_attr contains 'stored' || include.field.type == 'gvo' %}
+                    {% if include.field.multi %}
+                        {{ include.key }}_a
+                        {% if include.field.type == 'gvo' %}
+                            <br>
+                            {{ include.key }}_v_a
+                        {% endif %}
+                    {% else %}
+                        {{ include.key }}
                     {% endif %}
                 {% else %}
-                    {{ include.key }}
+                    Not Stored
                 {% endif %}
             </td>
         </tr>

@@ -94,7 +94,7 @@ class Flopper < Thor
           "type" => field[2],
           "multi" => field[3] == "true" ? true : false,
           "indexed" => field[4] == "true" ? true : false,
-          "solr_attr" => field[5] ? field[5].split(/-/) : "",
+          "solr_attr" => field[5] ? field[5].split(/-/) : nil,
           "ee" => field[6],
           "desc" => field[7]
         }
