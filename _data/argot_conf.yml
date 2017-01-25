@@ -1,0 +1,1132 @@
+---
+- id: '1'
+  key: id
+  type: str
+  multi: false
+  indexed: true
+  solr_attr:
+  - stored
+  ee: UniqueId
+  desc: Id of the document
+- id: '2'
+  key: oclc_number
+  type: hash
+  multi: false
+  indexed: false
+  solr_attr: ''
+  ee:
+  desc: Collection of OCLC Numbers associated with thing
+  attributes:
+  - id: '3'
+    key: value
+    type: str
+    multi: false
+    indexed: true
+    solr_attr:
+    - stored
+    ee: OCLCNumber
+    desc: OCLC Number
+  - id: '4'
+    key: old
+    type: str
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee:
+    desc: Array of old oclc numbers
+- id: '5'
+  key: ead_id
+  type: str
+  multi: false
+  indexed: false
+  solr_attr:
+  - stored
+  ee: EAD ID
+  desc: EAD ids
+- id: '6'
+  key: local_id
+  type: hash
+  multi: false
+  indexed: false
+  solr_attr: ''
+  ee:
+  desc: Collection of Local Identification numbers associated with the thing
+  attributes:
+  - id: '7'
+    key: value
+    type: str
+    multi: false
+    indexed: true
+    solr_attr:
+    - stored
+    ee: LocalId
+    desc: Primary Local Id
+  - id: '8'
+    key: other
+    type: str
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: Local System Number
+    desc: Catch all for other local identifiers
+- id: '9'
+  key: syndetics_id
+  type: str
+  multi: true
+  indexed: true
+  solr_attr:
+  - stored
+  ee: Syndetics ISBN
+  desc: |-
+    IDs to use for merging Syndetics data, can also be UPC for media formats
+    should be multivalued to increase opportunity for matching on different ISBNs
+- id: '10'
+  key: rollup_id
+  type: str
+  multi: false
+  indexed: false
+  solr_attr: ''
+  ee: Rollup ID
+  desc:
+- id: '11'
+  key: publication_year
+  type: i
+  multi: false
+  indexed: true
+  solr_attr:
+  - stored
+  - sort
+  ee: PubDateSort, Publication Year
+  desc: Publication Year
+- id: '12'
+  key: copyright_date
+  type: dt
+  multi: true
+  indexed: true
+  solr_attr:
+  - stored
+  ee: Copyright
+  desc: Copyright date
+- id: '13'
+  key: cataloged_date
+  type: dt
+  multi: false
+  indexed: true
+  solr_attr:
+  - stored
+  ee:
+  desc:
+- id: '14'
+  key: lang_code
+  type: str
+  multi: false
+  indexed: false
+  solr_attr: ''
+  ee:
+  desc: 3 character ISO code
+- id: '15'
+  key: language
+  type: str
+  multi: false
+  indexed: true
+  solr_attr:
+  - stored
+  ee:
+  desc: Human readable language associated with ISO code
+- id: '16'
+  key: isbn
+  type: hash
+  multi: false
+  indexed: false
+  solr_attr: ''
+  ee:
+  desc: Collection of ISBNs
+  attributes:
+  - id: '17'
+    key: primary
+    type: hash
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc: would usually come from 020$a
+    attributes:
+    - id: '18'
+      key: number
+      type: i
+      multi: false
+      indexed: true
+      solr_attr: ''
+      ee:
+      desc: numeric portion only, indexed, can be used for Syndetics ID
+    - id: '19'
+      key: qualifying_info
+      type: str
+      multi: false
+      indexed: true
+      solr_attr:
+      - stored
+      ee:
+      desc: any other data in the field, if present combined, the parent elements
+        create a display ISBN field
+  - id: '20'
+    key: other
+    type: hash
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc: 'would probably come from 020$z and/or 776$z, etc. '
+    attributes:
+    - id: '21'
+      key: number
+      type: i
+      multi: false
+      indexed: true
+      solr_attr: ''
+      ee:
+      desc: |-
+        numeric portion only, indexed
+        could be used as Syndetics ID to increase probability of match, but runs risk or false match (sometimes used for incorrect ISBNs printed on an item)
+    - id: '22'
+      key: qualifying_info
+      type: str
+      multi: false
+      indexed: true
+      solr_attr:
+      - stored
+      ee:
+      desc: combined, the parent elements create a display ISBN field, which can always
+        be displayed after the primary ISBNS
+- id: '23'
+  key: issn
+  type: hash
+  multi: false
+  indexed: false
+  solr_attr: ''
+  ee:
+  desc: Collection of ISSNs
+  attributes:
+  - id: '24'
+    key: primary
+    type: str
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: ISSN
+    desc: Primary ISSNs
+  - id: '25'
+    key: linking
+    type: str
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: Linking ISSN
+    desc: Linking ISSNs
+  - id: '26'
+    key: series
+    type: str
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: Series ISSN
+    desc: Series ISSNs
+- id: '27'
+  key: publisher_number
+  type: i
+  multi: true
+  indexed: true
+  solr_attr:
+  - stored
+  ee: Publisher Number
+  desc:
+- id: '28'
+  key: publisher_etc
+  type: hash
+  multi: true
+  indexed: false
+  solr_attr: ''
+  ee: Publisher, Distributor, Manufacturer, Producer
+  desc:
+  attributes:
+  - id: '29'
+    key: name
+    type: gvo
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc:
+  - id: '30'
+    key: type
+    type: str
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc:
+    attributes:
+    - id: '35'
+      key: main
+      type: gvo
+      multi: true
+      indexed: false
+      solr_attr: ''
+      ee:
+      desc:
+      attributes:
+      - id: '40'
+        key: main
+        type: gvo
+        multi: false
+        indexed: false
+        solr_attr: ''
+        ee: Main Title
+        desc: Main title
+      - id: '41'
+        key: sort
+        type: str
+        multi: false
+        indexed: true
+        solr_attr:
+        - sort
+        ee: Title Sort
+        desc: Sort version of main title
+      - id: '42'
+        key: uniform
+        type: hash
+        multi: false
+        indexed: false
+        solr_attr: ''
+        ee:
+        desc: "Uniform titles\nUniform Title from 730 should be mapped to: \n- Varying
+          Titles if indicator 2 != 2\n- Analytical title (see below) if indicator
+          2 = 2"
+      - id: '46'
+        key: journal
+        type: gvo
+        multi: true
+        indexed: false
+        solr_attr: ''
+        ee: Journal Title Index
+        desc:
+      - id: '47'
+        key: abbreviation
+        type: gvo
+        multi: true
+        indexed: false
+        solr_attr: ''
+        ee: Journal Title Abbreviation, Title Index
+        desc:
+      - id: '48'
+        key: translation
+        type: gvo
+        multi: true
+        indexed: false
+        solr_attr: ''
+        ee: Other Title Translation
+        desc:
+      - id: '49'
+        key: analytical
+        type: gvo
+        multi: true
+        indexed: false
+        solr_attr: ''
+        ee:
+        desc: |-
+          any 7XX controlled author field $t or 730/740 $a if and only if 2nd indicator = 2
+          This means the thing described CONTAINS the title recorded -- generally only used when it's a few works combined/cataloged in one volume, so this doesn't get to the level of Tables of Contents title indexing
+          These should be displayed differently (as "Also contains:" or something) and possibly weighted differently for relevance.
+        attributes:
+        - id: '54'
+          key: indexed
+          type: t
+          multi: true
+          indexed: true
+          solr_attr: ''
+          ee:
+          desc:
+        - id: '55'
+          key: serials_summary
+          type: t
+          multi: true
+          indexed: true
+          solr_attr: ''
+          ee:
+          desc:
+        - id: '56'
+          key: display
+          type: str
+          multi: true
+          indexed: false
+          solr_attr:
+          - stored
+          ee:
+          desc:
+      - id: '50'
+        key: alternate
+        type: gvo
+        multi: true
+        indexed: false
+        solr_attr: ''
+        ee:
+        desc: Some Uniform Title and Varying Titles and Other Titles should map here
+          only when 2nd indicator != 2
+      - id: '51'
+        key: earlier
+        type: gvo
+        multi: true
+        indexed: false
+        solr_attr: ''
+        ee: Journal Earlier Title, Earlier Title
+        desc: separate elements needed for proper display and possibly relevance ranking
+      - id: '52'
+        key: later
+        type: gvo
+        multi: true
+        indexed: false
+        solr_attr: ''
+        ee: Journal Later Title, Later Title
+        desc: separate elements needed for proper display and possibly relevance ranking
+    - id: '36'
+      key: other
+      type: gvo
+      multi: true
+      indexed: false
+      solr_attr: ''
+      ee:
+      desc:
+    - id: '37'
+      key: director
+      type: gvo
+      multi: true
+      indexed: false
+      solr_attr: ''
+      ee:
+      desc:
+    - id: '38'
+      key: uncontrolled
+      type: gvo
+      multi: true
+      indexed: false
+      solr_attr: ''
+      ee:
+      desc:
+      attributes:
+      - id: '43'
+        key: main
+        type: gvo
+        multi: false
+        indexed: false
+        solr_attr: ''
+        ee: Main Uniform Title
+        desc: Main Uniform Title
+      - id: '44'
+        key: journal
+        type: gvo
+        multi: false
+        indexed: false
+        solr_attr: ''
+        ee: Journal Uniform Title
+        desc: Main Journal Uniform Title
+      - id: '45'
+        key: collective
+        type: gvo
+        multi: false
+        indexed: false
+        solr_attr: ''
+        ee: Collective Uniform Title
+        desc: Collective Uniform Title
+- id: '31'
+  key: imprint
+  type: hash
+  multi: true
+  indexed: false
+  solr_attr: ''
+  ee: Imprint, Sound Recording Imprint, Production Statement, Manufacturer Statement,
+    Distribution Statement, Copyright Statement
+  desc:
+  attributes:
+  - id: '32'
+    key: display
+    type: str
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc:
+  - id: '33'
+    key: type
+    type: str
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc:
+- id: '34'
+  key: authors
+  type: hash
+  multi: false
+  indexed: false
+  solr_attr: ''
+  ee:
+  desc:
+- id: '39'
+  key: title
+  type: hash
+  multi: false
+  indexed: false
+  solr_attr: ''
+  ee:
+  desc: |-
+    Endeca data model also has separate ee:Journal Earlier Title and ee:Journal Later Title elements
+    See if anything can be done to reduce redundancy of fields mapped to journal title indexes
+    No need for separate uniform_main and uniform_journal when both come from 245, etc.?
+- id: '53'
+  key: notes
+  type: hash
+  multi: false
+  indexed: false
+  solr_attr: ''
+  ee:
+  desc:
+  attributes:
+  - id: '58'
+    key: href
+    type: str
+    multi: false
+    indexed: true
+    solr_attr:
+    - stored
+    ee:
+    desc:
+    attributes:
+    - id: '63'
+      key: value
+      type: t
+      multi: false
+      indexed: true
+      solr_attr:
+      - stored
+      ee:
+      desc:
+    - id: '64'
+      key: isn
+      type: str
+      multi: false
+      indexed: true
+      solr_attr:
+      - stored
+      ee:
+      desc:
+      attributes:
+      - id: '69'
+        key: value
+        type: t
+        multi: false
+        indexed: true
+        solr_attr:
+        - stored
+        ee:
+        desc:
+      - id: '70'
+        key: isn
+        type: str
+        multi: false
+        indexed: true
+        solr_attr:
+        - stored
+        ee:
+        desc:
+        attributes:
+        - id: '75'
+          key: value
+          type: t
+          multi: false
+          indexed: true
+          solr_attr:
+          - stored
+          ee:
+          desc:
+        - id: '76'
+          key: isn
+          type: str
+          multi: false
+          indexed: true
+          solr_attr:
+          - stored
+          ee:
+          desc:
+          attributes:
+          - id: '81'
+            key: value
+            type: t
+            multi: false
+            indexed: true
+            solr_attr:
+            - stored
+            ee:
+            desc:
+          - id: '82'
+            key: isn
+            type: str
+            multi: false
+            indexed: true
+            solr_attr:
+            - stored
+            ee:
+            desc:
+            attributes:
+            - id: '87'
+              key: value
+              type: t
+              multi: false
+              indexed: true
+              solr_attr:
+              - stored
+              ee:
+              desc:
+            - id: '88'
+              key: isn
+              type: str
+              multi: false
+              indexed: true
+              solr_attr:
+              - stored
+              ee:
+              desc:
+  - id: '59'
+    key: rel
+    type: string
+    multi: false
+    indexed: false
+    solr_attr:
+    - stored
+    ee:
+    desc:
+  - id: '60'
+    key: text
+    type: string
+    multi: false
+    indexed: true
+    solr_attr:
+    - stored
+    ee:
+    desc:
+- id: '57'
+  key: url
+  type: hash
+  multi: true
+  indexed: false
+  solr_attr: ''
+  ee:
+  desc:
+  attributes:
+  - id: '62'
+    key: main_series
+    type: hash
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc:
+  - id: '65'
+    key: subseries
+    type: hash
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc:
+  - id: '68'
+    key: translation_of_title
+    type: hash
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc:
+  - id: '71'
+    key: translated_as_title
+    type: hash
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc:
+  - id: '74'
+    key: has_supplement
+    type: hash
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc:
+  - id: '77'
+    key: supplement_to
+    type: hash
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc:
+  - id: '80'
+    key: host_item_title
+    type: hash
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc:
+  - id: '83'
+    key: constituent_unit_title
+    type: hash
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc:
+  - id: '86'
+    key: added_entry
+    type: hash
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc:
+- id: '61'
+  key: linking
+  type: hash
+  multi: false
+  indexed: false
+  solr_attr: ''
+  ee:
+  desc:
+  attributes:
+  - id: '66'
+    key: value
+    type: t
+    multi: false
+    indexed: true
+    solr_attr:
+    - stored
+    ee:
+    desc:
+  - id: '67'
+    key: isn
+    type: str
+    multi: false
+    indexed: true
+    solr_attr:
+    - stored
+    ee:
+    desc:
+    attributes:
+    - id: '72'
+      key: value
+      type: t
+      multi: false
+      indexed: true
+      solr_attr:
+      - stored
+      ee:
+      desc:
+    - id: '73'
+      key: isn
+      type: str
+      multi: false
+      indexed: true
+      solr_attr:
+      - stored
+      ee:
+      desc:
+      attributes:
+      - id: '78'
+        key: value
+        type: t
+        multi: false
+        indexed: true
+        solr_attr:
+        - stored
+        ee:
+        desc:
+      - id: '79'
+        key: isn
+        type: str
+        multi: false
+        indexed: true
+        solr_attr:
+        - stored
+        ee:
+        desc:
+        attributes:
+        - id: '84'
+          key: value
+          type: t
+          multi: false
+          indexed: true
+          solr_attr:
+          - stored
+          ee:
+          desc:
+        - id: '85'
+          key: isn
+          type: str
+          multi: false
+          indexed: true
+          solr_attr:
+          - stored
+          ee:
+          desc:
+- id: '89'
+  key: format
+  type: f
+  multi: true
+  indexed: true
+  solr_attr:
+  - stored
+  ee:
+  desc:
+- id: '90'
+  key: subjects
+  type: pp
+  multi: true
+  indexed: true
+  solr_attr:
+  - stored
+  ee:
+  desc:
+  attributes:
+  - id: '95'
+    key: current
+    type: str
+    multi: false
+    indexed: false
+    solr_attr: ''
+    ee: Current Frequency
+    desc:
+  - id: '96'
+    key: former
+    type: str
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee: Former Frequency
+    desc:
+- id: '91'
+  key: statement_of_responsibility
+  type: gvo
+  multi: true
+  indexed: false
+  solr_attr: ''
+  ee:
+  desc:
+- id: '92'
+  key: edition
+  type: gvo
+  multi: true
+  indexed: false
+  solr_attr: ''
+  ee: Edition
+  desc:
+- id: '93'
+  key: cartographic_data
+  type: t
+  multi: true
+  indexed: true
+  solr_attr:
+  - stored
+  ee: Cartographic data
+  desc:
+  attributes:
+  - id: '98'
+    key: general
+    type: t
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: Material
+    desc:
+  - id: '99'
+    key: sound
+    type: t
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: Material Details
+    desc:
+  - id: '100'
+    key: projection
+    type: t
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: Material Details
+    desc:
+  - id: '101'
+    key: video
+    type: t
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: Material Details
+    desc:
+    attributes:
+    - id: '106'
+      key: main
+      type: gvo
+      multi: true
+      indexed: false
+      solr_attr: ''
+      ee:
+      desc:
+    - id: '107'
+      key: personal
+      type: gvo
+      multi: true
+      indexed: false
+      solr_attr: ''
+      ee:
+      desc:
+    - id: '108'
+      key: corporate
+      type: gvo
+      multi: true
+      indexed: false
+      solr_attr: ''
+      ee:
+      desc:
+    - id: '109'
+      key: meeting
+      type: gvo
+      multi: true
+      indexed: false
+      solr_attr: ''
+      ee:
+      desc:
+    - id: '110'
+      key: uniform
+      type: gvo
+      multi: true
+      indexed: false
+      solr_attr: ''
+      ee:
+      desc:
+  - id: '102'
+    key: digital_file
+    type: t
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: Material Details
+    desc:
+- id: '94'
+  key: frequency
+  type: hash
+  multi: false
+  indexed: false
+  solr_attr: ''
+  ee:
+  desc:
+- id: '97'
+  key: description
+  type: hash
+  multi: false
+  indexed: false
+  solr_attr: ''
+  ee:
+  desc:
+- id: '103'
+  key: organization
+  type: t
+  multi: true
+  indexed: true
+  solr_attr:
+  - stored
+  ee:
+  desc:
+- id: '104'
+  key: volumes
+  type: t
+  multi: true
+  indexed: true
+  solr_attr:
+  - stored
+  ee:
+  desc:
+- id: '105'
+  key: series
+  type: hash
+  multi: false
+  indexed: false
+  solr_attr: ''
+  ee:
+  desc:
+- id: '111'
+  key: source_of_acquisition
+  type: t
+  multi: true
+  indexed: true
+  solr_attr:
+  - stored
+  ee:
+  desc:
+- id: '112'
+  key: related_collections
+  type: t
+  multi: true
+  indexed: true
+  solr_attr:
+  - stored
+  ee:
+  desc:
+  attributes:
+  - id: '117'
+    key: barcode
+    type: str
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee:
+    desc:
+  - id: '118'
+    key: copy_number
+    type: str
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee:
+    desc:
+  - id: '119'
+    key: due_date
+    type: dt
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee:
+    desc:
+  - id: '120'
+    key: ils_id
+    type: str
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc:
+  - id: '121'
+    key: location
+    type: f
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee:
+    desc:
+  - id: '122'
+    key: note
+    type: t
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee:
+    desc:
+  - id: '123'
+    key: checkouts
+    type: i
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc:
+  - id: '124'
+    key: call_number_tag
+    type: f
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee:
+    desc:
+  - id: '125'
+    key: classification_number
+    type: lccn
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee:
+    desc:
+  - id: '126'
+    key: status
+    type: str
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc:
+  - id: '127'
+    key: type
+    type: str
+    multi: true
+    indexed: false
+    solr_attr: ''
+    ee:
+    desc:
+  - id: '128'
+    key: volume
+    type: str
+    multi: true
+    indexed: false
+    solr_attr:
+    - stored
+    ee:
+    desc:
+- id: '113'
+  key: biographical_sketch
+  type: t
+  multi: true
+  indexed: true
+  solr_attr:
+  - stored
+  ee:
+  desc:
+- id: '114'
+  key: most_recent
+  type: t
+  multi: true
+  indexed: true
+  solr_attr:
+  - stored
+  ee:
+  desc:
+- id: '115'
+  key: holdings_note
+  type: t
+  multi: true
+  indexed: true
+  solr_attr:
+  - stored
+  ee:
+  desc:
+- id: '116'
+  key: items
+  type: hash
+  multi: true
+  indexed: false
+  solr_attr: ''
+  ee:
+  desc:

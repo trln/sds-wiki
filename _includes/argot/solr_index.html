@@ -1,1 +1,32 @@
 <h4>Solr Index</h4>
+<table class="table">
+    <thead><tr><th>Indexed</th><th>Stored Key</th></tr></thead>
+    <tbody>
+        <tr>
+            <td>
+                {% if include.field.type == 'gvo' %}
+                    {{ include.key }}_t
+                    <br>
+                    {{ include.key }}_*_v <em>where * is the 3 letter lang code</em>
+                {% else %}
+                    {% if include.field.indexed %}
+                        {{ include.key }}_{{ include.field.type }}
+                    {% else %}
+                        Not indexed
+                    {% endif %}
+                {% endif %}
+            </td>
+            <td>
+                {% if include.field.multi %}
+                    {{ include.key }}_a
+                    {% if include.field.type == 'gvo' %}
+                        <br>
+                        {{ include.key }}_v_a
+                    {% endif %}
+                {% else %}
+                    {{ include.key }}
+                {% endif %}
+            </td>
+        </tr>
+    </tbody>
+</table>
