@@ -24,8 +24,32 @@
 
 # desc = notes/descriptions
 
-# solr_type = the dynamic field type that will be assigned in solr
+# solr = if the field has this attribute, it will be indexed in solr
+
+# solr.type = the dynamic field type that will be assigned in solr
 #
+# t:        text
+# tp:       text_nostem
+# tl:       text_leftjustified
+# e:        exactish
+# i:        int
+# float:    float
+# double:   double
+# str:      string
+# f:        string (for facets)
+# long:     long
+# dt:       date
+# isbn:     isbn
+# lccn:     lccn
+# num:      numericID
+# pp:       pipe_delimited
+# bin:      binary
+# bool:     boolean
+# loc:      location_rpt
+# pt:       point
+#
+
+# solr.attr: "stored" and "sort" are currently the only options
 
 
 ###########
@@ -34,8 +58,12 @@
 - key: id
   type: string
   multi: false
+  solr:
+    type: str
+    attr:
+      - stored
   ee: UniqueId
-  desc: | 
+  desc: |
     Id of the document
 
 - key: oclc_number
@@ -47,18 +75,30 @@
     - key: value
       type: string
       multi: false
+      solr:
+        type: str
+        attr:
+          - stored
       ee: OCLCNumber
       desc: |
         OCLC Number
     - key: old
       type: string
       multi: true
+      solr:
+        type: str
+        attr:
+          - stored
       desc: |
         Array of old oclc numbers
 
 - key: ead_id
   type: string
   multi: false
+  solr:
+    type: str
+    attr:
+      - stored
   ee: EAD ID
   desc: |
     EAD ids
@@ -85,6 +125,10 @@
 - key: syndetics_id
   type: string
   multi: true
+  solr:
+    type: str
+    attr:
+      - stored
   ee: Syndetics ISBN
   desc: |
     IDs to use for merging Syndetics data, can also be UPC for media formats
@@ -93,6 +137,10 @@
 - key: rollup_id
   type: string
   multi: false
+  solr:
+    type: str
+    attr:
+      - stored
   ee: Rollup ID
 
 
@@ -103,6 +151,11 @@
 - key: publication_year
   type: string
   multi: false
+  solr:
+    type: i
+    attr:
+      - stored
+      - sort
   ee: PubDateSort, Publication Year
   desc: | 
     Publication Year
@@ -215,7 +268,7 @@
   type: hash
   multi: true
   ee: Publisher, Distributor, Manufacturer, Producer
-  atttributes:
+  attributes:
     - key: name
       type: gvo
       multi: true
@@ -227,7 +280,7 @@
   type: hash
   multi: true
   ee: Imprint, Sound Recording Imprint, Production Statement, Manufacturer Statement, Distribution Statement, Copyright Statement
-  atttributes:
+  attributes:
     - key: display
       type: gvo
       multi: true
