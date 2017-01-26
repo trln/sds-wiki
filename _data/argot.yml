@@ -515,7 +515,7 @@
     desc: 
   - id: '59'
     key: rel
-    type: string
+    type: str
     multi: false
     indexed: false
     solr_attr:
@@ -524,7 +524,7 @@
     desc: 
   - id: '60'
     key: text
-    type: string
+    type: t
     multi: false
     indexed: true
     solr_attr:
