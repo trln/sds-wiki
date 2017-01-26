@@ -1,0 +1,2 @@
+-&nbsp;{{ include.key }}<br>&nbsp;&nbsp;type:&nbsp;t<br>&nbsp;&nbsp;attr:<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;stored{% if !include.multi %}<br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;single{% endif %}
+{% if include.type == "gvo" %}<br>-&nbsp;{{ include.key }}_*_v<br>&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;t<br>&nbsp;&nbsp;&nbsp;&nbsp;attr:&nbsp;-&nbsp;stored{% if !include.multi %}&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;single{% endif %}{% endif %}

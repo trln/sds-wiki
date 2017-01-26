@@ -1,0 +1,18 @@
+<ul class="list-inline">
+    {% if include.attribute.type == 'hash' %}
+        <li class="list-inline-item"><span class="badge badge-info">Hash</span></li>
+    {% elsif include.attribute.type == 'gvo' %}
+        <li class="list-inline-item"><span class="badge badge-primary">Vernacular Object</span></li>
+    {% else %}
+        <li class="list-inline-item"><span class="badge badge-default">String</span></li>
+    {% endif %}
+
+    {% if include.attribute.multi %}
+        <li class="list-inline-item"><span class="badge badge-pill badge-warning">Multi</span></li>
+    {% endif %}
+
+    {% if include.attribute.ee != nil %}
+        <li class="list-inline-item">ee: {{ include.attribute.ee }}</li>
+    {% endif %}
+</ul>
+

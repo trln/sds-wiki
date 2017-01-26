@@ -1,0 +1,13 @@
+{% if include.field.solr_attr contains 'stored' || include.field.type == 'gvo' %}
+    {% if include.field.multi %}
+        {{ include.key | replace: ":","_" }}_a
+        {% if include.field.type == 'gvo' %}
+            <br>
+            {{ include.key | replace: ":","_" }}_v_a
+        {% endif %}
+    {% else %}
+        {{ include.key | replace: ":","_" }}
+    {% endif %}
+{% else %}
+    <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+{% endif %}

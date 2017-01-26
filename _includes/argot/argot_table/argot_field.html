@@ -1,0 +1,43 @@
+<tr>
+  <td>
+    {{ include.key }}
+  </td>
+  <td>
+    {% include argot/field_type_map.html type=include.field.type %}
+  </td>
+  <td>
+    {% if field.indexed %}
+      <i class="fa fa-check" aria-hidden="true"></i>
+    {% else %}
+      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+    {% endif %}
+  </td>
+  <td>
+    {% if field.multi %}
+      <i class="fa fa-check" aria-hidden="true"></i>
+    {% else %}
+      <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+    {% endif %}
+  </td>
+  <td>
+    ...
+  </td>
+  <td>
+    {% include argot/solr_indexed_key.html field=include.field key=include.key %}
+  </td>
+  <td>
+    {% include argot/solr_stored_key.html field=include.field key=include.key %}
+  </td>
+  <td>
+    {{ include.field.ee }}
+  </td>
+  <td>
+    {{ include.field.desc }}
+  </td>
+</tr>
+{% if include.field.type == 'hash' %}
+  {% for attribute in include.field.attributes %}
+    {% capture expanding_key %}{{ include.key }}:{{ attribute.key }}{% endcapture %}
+    {% include argot/argot_table/argot_field.html field=attribute key=expanding_key %}
+  {% endfor %}
+{% endif %}

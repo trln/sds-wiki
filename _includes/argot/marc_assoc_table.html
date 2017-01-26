@@ -1,0 +1,27 @@
+<h5>MARC Associations</h5>
+<table class="table">
+    <thead>
+    <tr>
+        <th>UNC</th>
+        <th>NCSU</th>
+        <th>Duke</th>
+        <th>NCCU</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            {% include argot/marc_assocs.html lookup_key=inlcude.key school='unc' %}
+        </td>
+        <td>
+            {% include argot/marc_assocs.html lookup_key=inlcude.key school='ncsu' %}
+        </td>
+        <td>
+            {% include argot/marc_assocs.html lookup_key=inlcude.key school='duke' %}
+        </td>
+        <td>
+            {% include argot/marc_assocs.html lookup_key=inlcude.key school='nccu' %}
+        </td>
+    </tr>
+    </tbody>
+</table>

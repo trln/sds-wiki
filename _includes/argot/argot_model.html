@@ -1,0 +1,8 @@
+{% for field in site.data.argot %}
+    <div class="row">
+        <div class="col-12">
+            {% include argot/argot_field.html field=field key=field.key %}
+        </div>
+    </div>
+    <hr>
+{% endfor %}

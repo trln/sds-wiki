@@ -1,0 +1,18 @@
+{% if include.school == 'unc' %}
+  {% assign marc = site.data.marc_maps.unc %}
+{% elsif include.school == 'ncsu' %}
+  {% assign marc = site.data.marc_maps.ncsu %}
+{% elsif include.school == 'duke' %}
+  {% assign marc = site.data.marc_maps.duke %}
+{% elsif include.school == 'nccu' %}
+  {% assign marc = site.data.marc_maps.nccu %}
+{% endif %}
+
+<ul>
+{% for m in marc %}
+  {% if m.argot == include.lookup_key %}
+    <li>{{ m.field }}{{ m.subfields }}</li>
+  {% endif %}
+{% endfor %}
+</ul>
+

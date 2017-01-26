@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title">
+      <a data-toggle="collapse" href="#{{ include.key }}Collapse" aria-expanded="false" aria-controls="{{ include.key }}Collapse">{{ include.field.key }}</a>
+    </h4>
+    <h6 class="card-subtitle">
+      {% include argot/attribute_elements.html attribute=include.field %}
+    </h6>
+    <div class="collapse" id="{{ include.key }}Collapse">
+      <p class="card-text">
+        {{ include.field.description }}
+      </p>
+      {% if include.field.type == 'hash' %}
+
+        {% for attribute in include.field.attributes %}
+          {% capture expanding_key %}{{ include.key }}_{{ attribute.key }}{% endcapture %}
+          {% include argot/argot_field.html field=attribute key=expanding_key %}
+        {% endfor %}
+
+      {% else %}
+
+        {% include argot/marc_assoc_table.html key=include.key %}
+        {% include argot/solr_index.html field=include.field key=include.key %}
+        {% include argot/ui_usage.html %}
+
+      {% endif %}
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,13 @@
+---
+layout: code
+title: Solr Fields Template
+breadcrumb: Solr Field Template
+---
+
+{% for field in site.data.argot %}
+ {% if field.type == 'hash' %}
+  {% include code_templates/solr_field_hash.html field=field parent=field.key %}
+ {% else %}
+  {% include partials/solr_field_config_yaml.html key=field.key multi=field.multi type=field.type %}
+ {% endif %}
+{% endfor %}
