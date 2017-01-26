@@ -1,0 +1,27 @@
+{% if include.type == 't' %}
+    text
+{% elsif include.type == 'tp' %}
+    text, no stemming
+{% elsif include.type == 'tl' %}
+    text, left justified
+{% elsif include.type == 'e' %}
+    exactish
+{% elsif include.type == 'i' %}
+    integer
+{% elsif include.type == 'str' %}
+    string
+{% elsif include.type == 'f' %}
+    string, (for facets)
+{% elsif include.type == 'dt' %}
+    date
+{% elsif include.type == 'num' %}
+    numeric Id
+{% elsif include.type == 'pp' %}
+    pipe delimited
+{% elsif include.type == 'bin' %}
+    binary
+{% elsif include.type == 'bool' %}
+    boolean
+{% else %}
+    {{ include.type }}
+{% endif %}

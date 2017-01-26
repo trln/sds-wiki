@@ -1,0 +1,19 @@
+{% if include.field.type == 'gvo' %}
+    {{ include.key | replace: ":","_" }}_t
+    <br>
+    {{ include.key | replace: ":","_" }}_*_v
+{% else %}
+    {% if include.field.indexed %}
+        {% if include.field.solr_attr contains 'sort' %}
+            {% if include.field.type == "i" || include.field.type == "float" || include.field.type == "long" || include.field.type == "double" %}
+                {{ include.key | replace: ":","_" }}_isort
+            {% else %}
+                {{ include.key | replace: ":","_" }}_ssort
+            {% endif %}
+        {% else %}
+            {{ include.key | replace: ":","_" }}_{{ include.field.type }}
+        {% endif %}
+    {% else %}
+        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+    {% endif %}
+{% endif %}

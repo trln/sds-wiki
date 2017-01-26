@@ -13,7 +13,7 @@
   type: hash
   multi: false
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: 
   desc: Collection of OCLC Numbers associated with thing
   attributes:
@@ -35,196 +35,6 @@
     - stored
     ee: 
     desc: Array of old oclc numbers
-    attributes:
-    - id: '98'
-      key: general
-      type: t
-      multi: true
-      indexed: true
-      solr_attr:
-      - stored
-      ee: Material
-      desc: 
-    - id: '99'
-      key: sound
-      type: t
-      multi: true
-      indexed: true
-      solr_attr:
-      - stored
-      ee: Material Details
-      desc: 
-    - id: '100'
-      key: projection
-      type: t
-      multi: true
-      indexed: true
-      solr_attr:
-      - stored
-      ee: Material Details
-      desc: 
-    - id: '101'
-      key: video
-      type: t
-      multi: true
-      indexed: true
-      solr_attr:
-      - stored
-      ee: Material Details
-      desc: 
-    - id: '102'
-      key: digital_file
-      type: t
-      multi: true
-      indexed: true
-      solr_attr:
-      - stored
-      ee: Material Details
-      desc: 
-    - id: '106'
-      key: main
-      type: gvo
-      multi: true
-      indexed: false
-      solr_attr: ''
-      ee: 
-      desc: 
-    - id: '107'
-      key: personal
-      type: gvo
-      multi: true
-      indexed: false
-      solr_attr: ''
-      ee: 
-      desc: 
-    - id: '108'
-      key: corporate
-      type: gvo
-      multi: true
-      indexed: false
-      solr_attr: ''
-      ee: 
-      desc: 
-    - id: '109'
-      key: meeting
-      type: gvo
-      multi: true
-      indexed: false
-      solr_attr: ''
-      ee: 
-      desc: 
-    - id: '110'
-      key: uniform
-      type: gvo
-      multi: true
-      indexed: false
-      solr_attr: ''
-      ee: 
-      desc: 
-    - id: '117'
-      key: barcode
-      type: str
-      multi: true
-      indexed: true
-      solr_attr:
-      - stored
-      ee: 
-      desc: 
-    - id: '118'
-      key: copy_number
-      type: str
-      multi: true
-      indexed: true
-      solr_attr:
-      - stored
-      ee: 
-      desc: 
-    - id: '119'
-      key: due_date
-      type: dt
-      multi: true
-      indexed: true
-      solr_attr:
-      - stored
-      ee: 
-      desc: 
-    - id: '120'
-      key: ils_id
-      type: str
-      multi: true
-      indexed: false
-      solr_attr: ''
-      ee: 
-      desc: 
-    - id: '121'
-      key: location
-      type: f
-      multi: true
-      indexed: true
-      solr_attr:
-      - stored
-      ee: 
-      desc: 
-    - id: '122'
-      key: note
-      type: t
-      multi: true
-      indexed: true
-      solr_attr:
-      - stored
-      ee: 
-      desc: 
-    - id: '123'
-      key: checkouts
-      type: i
-      multi: true
-      indexed: false
-      solr_attr: ''
-      ee: 
-      desc: 
-    - id: '124'
-      key: call_number_tag
-      type: f
-      multi: true
-      indexed: true
-      solr_attr:
-      - stored
-      ee: 
-      desc: 
-    - id: '125'
-      key: classification_number
-      type: lccn
-      multi: true
-      indexed: true
-      solr_attr:
-      - stored
-      ee: 
-      desc: 
-    - id: '126'
-      key: status
-      type: str
-      multi: true
-      indexed: false
-      solr_attr: ''
-      ee: 
-      desc: 
-    - id: '127'
-      key: type
-      type: str
-      multi: true
-      indexed: false
-      solr_attr: ''
-      ee: 
-      desc: 
-    - id: '128'
-      key: volume
-      type: str
-      multi: true
-      indexed: false
-      solr_attr:
-      - stored
-      ee: 
-      desc: 
 - id: '5'
   key: ead_id
   type: str
@@ -239,7 +49,7 @@
   type: hash
   multi: false
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: 
   desc: Collection of Local Identification numbers associated with the thing
   attributes:
@@ -277,7 +87,7 @@
   type: str
   multi: false
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: Rollup ID
   desc: 
 - id: '11'
@@ -313,7 +123,7 @@
   type: str
   multi: false
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: 
   desc: 3 character ISO code
 - id: '15'
@@ -330,7 +140,7 @@
   type: hash
   multi: false
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: 
   desc: Collection of ISBNs
   attributes:
@@ -339,7 +149,7 @@
     type: hash
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: would usually come from 020$a
     attributes:
@@ -348,7 +158,7 @@
       type: i
       multi: false
       indexed: true
-      solr_attr: ''
+      solr_attr: 
       ee: 
       desc: numeric portion only, indexed, can be used for Syndetics ID
     - id: '19'
@@ -366,7 +176,7 @@
     type: hash
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 'would probably come from 020$z and/or 776$z, etc. '
     attributes:
@@ -375,7 +185,7 @@
       type: i
       multi: false
       indexed: true
-      solr_attr: ''
+      solr_attr: 
       ee: 
       desc: |-
         numeric portion only, indexed
@@ -395,7 +205,7 @@
   type: hash
   multi: false
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: 
   desc: Collection of ISSNs
   attributes:
@@ -440,7 +250,7 @@
   type: hash
   multi: true
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: Publisher, Distributor, Manufacturer, Producer
   desc: 
   attributes:
@@ -449,7 +259,7 @@
     type: gvo
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
   - id: '30'
@@ -457,7 +267,7 @@
     type: str
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
 - id: '31'
@@ -465,7 +275,7 @@
   type: hash
   multi: true
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: Imprint, Sound Recording Imprint, Production Statement, Manufacturer Statement,
     Distribution Statement, Copyright Statement
   desc: 
@@ -475,7 +285,7 @@
     type: str
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
   - id: '33'
@@ -483,7 +293,7 @@
     type: str
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
 - id: '34'
@@ -491,7 +301,7 @@
   type: hash
   multi: false
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: 
   desc: 
   attributes:
@@ -500,7 +310,7 @@
     type: gvo
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
   - id: '36'
@@ -508,7 +318,7 @@
     type: gvo
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
   - id: '37'
@@ -516,7 +326,7 @@
     type: gvo
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
   - id: '38'
@@ -524,7 +334,7 @@
     type: gvo
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
 - id: '39'
@@ -532,7 +342,7 @@
   type: hash
   multi: false
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: 
   desc: |-
     Endeca data model also has separate ee:Journal Earlier Title and ee:Journal Later Title elements
@@ -544,7 +354,7 @@
     type: gvo
     multi: false
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: Main Title
     desc: Main title
   - id: '41'
@@ -561,7 +371,7 @@
     type: hash
     multi: false
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: "Uniform titles\nUniform Title from 730 should be mapped to: \n- Varying
       Titles if indicator 2 != 2\n- Analytical title (see below) if indicator 2 =
@@ -572,7 +382,7 @@
       type: gvo
       multi: false
       indexed: false
-      solr_attr: ''
+      solr_attr: 
       ee: Main Uniform Title
       desc: Main Uniform Title
     - id: '44'
@@ -580,7 +390,7 @@
       type: gvo
       multi: false
       indexed: false
-      solr_attr: ''
+      solr_attr: 
       ee: Journal Uniform Title
       desc: Main Journal Uniform Title
     - id: '45'
@@ -588,7 +398,7 @@
       type: gvo
       multi: false
       indexed: false
-      solr_attr: ''
+      solr_attr: 
       ee: Collective Uniform Title
       desc: Collective Uniform Title
   - id: '46'
@@ -596,7 +406,7 @@
     type: gvo
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: Journal Title Index
     desc: 
   - id: '47'
@@ -604,7 +414,7 @@
     type: gvo
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: Journal Title Abbreviation, Title Index
     desc: 
   - id: '48'
@@ -612,7 +422,7 @@
     type: gvo
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: Other Title Translation
     desc: 
   - id: '49'
@@ -620,7 +430,7 @@
     type: gvo
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: |-
       any 7XX controlled author field $t or 730/740 $a if and only if 2nd indicator = 2
@@ -631,7 +441,7 @@
     type: gvo
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: Some Uniform Title and Varying Titles and Other Titles should map here only
       when 2nd indicator != 2
@@ -640,7 +450,7 @@
     type: gvo
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: Journal Earlier Title, Earlier Title
     desc: separate elements needed for proper display and possibly relevance ranking
   - id: '52'
@@ -648,7 +458,7 @@
     type: gvo
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: Journal Later Title, Later Title
     desc: separate elements needed for proper display and possibly relevance ranking
 - id: '53'
@@ -656,7 +466,7 @@
   type: hash
   multi: false
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: 
   desc: 
   attributes:
@@ -665,7 +475,7 @@
     type: t
     multi: true
     indexed: true
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
   - id: '55'
@@ -673,7 +483,7 @@
     type: t
     multi: true
     indexed: true
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
   - id: '56'
@@ -690,7 +500,7 @@
   type: hash
   multi: true
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: 
   desc: 
   attributes:
@@ -726,7 +536,7 @@
   type: hash
   multi: false
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: 
   desc: 
   attributes:
@@ -735,7 +545,7 @@
     type: hash
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
     attributes:
@@ -762,7 +572,7 @@
     type: hash
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
     attributes:
@@ -789,7 +599,7 @@
     type: hash
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
     attributes:
@@ -816,7 +626,7 @@
     type: hash
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
     attributes:
@@ -843,7 +653,7 @@
     type: hash
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
     attributes:
@@ -870,7 +680,7 @@
     type: hash
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
     attributes:
@@ -897,7 +707,7 @@
     type: hash
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
     attributes:
@@ -924,7 +734,7 @@
     type: hash
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
     attributes:
@@ -951,7 +761,7 @@
     type: hash
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: 
     desc: 
     attributes:
@@ -996,7 +806,7 @@
   type: gvo
   multi: true
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: 
   desc: 
 - id: '92'
@@ -1004,7 +814,7 @@
   type: gvo
   multi: true
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: Edition
   desc: 
 - id: '93'
@@ -1021,7 +831,7 @@
   type: hash
   multi: false
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: 
   desc: 
   attributes:
@@ -1030,7 +840,7 @@
     type: str
     multi: false
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: Current Frequency
     desc: 
   - id: '96'
@@ -1038,7 +848,7 @@
     type: str
     multi: true
     indexed: false
-    solr_attr: ''
+    solr_attr: 
     ee: Former Frequency
     desc: 
 - id: '97'
@@ -1046,9 +856,55 @@
   type: hash
   multi: false
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: 
   desc: 
+  attributes:
+  - id: '98'
+    key: general
+    type: t
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: Material
+    desc: 
+  - id: '99'
+    key: sound
+    type: t
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: Material Details
+    desc: 
+  - id: '100'
+    key: projection
+    type: t
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: Material Details
+    desc: 
+  - id: '101'
+    key: video
+    type: t
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: Material Details
+    desc: 
+  - id: '102'
+    key: digital_file
+    type: t
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: Material Details
+    desc: 
 - id: '103'
   key: organization
   type: t
@@ -1072,9 +928,50 @@
   type: hash
   multi: false
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: 
   desc: 
+  attributes:
+  - id: '106'
+    key: main
+    type: gvo
+    multi: true
+    indexed: false
+    solr_attr: 
+    ee: 
+    desc: 
+  - id: '107'
+    key: personal
+    type: gvo
+    multi: true
+    indexed: false
+    solr_attr: 
+    ee: 
+    desc: 
+  - id: '108'
+    key: corporate
+    type: gvo
+    multi: true
+    indexed: false
+    solr_attr: 
+    ee: 
+    desc: 
+  - id: '109'
+    key: meeting
+    type: gvo
+    multi: true
+    indexed: false
+    solr_attr: 
+    ee: 
+    desc: 
+  - id: '110'
+    key: uniform
+    type: gvo
+    multi: true
+    indexed: false
+    solr_attr: 
+    ee: 
+    desc: 
 - id: '111'
   key: source_of_acquisition
   type: t
@@ -1125,6 +1022,111 @@
   type: hash
   multi: true
   indexed: false
-  solr_attr: ''
+  solr_attr: 
   ee: 
   desc: 
+  attributes:
+  - id: '117'
+    key: barcode
+    type: str
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: 
+    desc: 
+  - id: '118'
+    key: copy_number
+    type: str
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: 
+    desc: 
+  - id: '119'
+    key: due_date
+    type: dt
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: 
+    desc: 
+  - id: '120'
+    key: ils_id
+    type: str
+    multi: true
+    indexed: false
+    solr_attr: 
+    ee: 
+    desc: 
+  - id: '121'
+    key: location
+    type: f
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: 
+    desc: 
+  - id: '122'
+    key: note
+    type: t
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: 
+    desc: 
+  - id: '123'
+    key: checkouts
+    type: i
+    multi: true
+    indexed: false
+    solr_attr: 
+    ee: 
+    desc: 
+  - id: '124'
+    key: call_number_tag
+    type: f
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: 
+    desc: 
+  - id: '125'
+    key: classification_number
+    type: lccn
+    multi: true
+    indexed: true
+    solr_attr:
+    - stored
+    ee: 
+    desc: 
+  - id: '126'
+    key: status
+    type: str
+    multi: true
+    indexed: false
+    solr_attr: 
+    ee: 
+    desc: 
+  - id: '127'
+    key: type
+    type: str
+    multi: true
+    indexed: false
+    solr_attr: 
+    ee: 
+    desc: 
+  - id: '128'
+    key: volume
+    type: str
+    multi: true
+    indexed: false
+    solr_attr:
+    - stored
+    ee: 
+    desc: 
