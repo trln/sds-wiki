@@ -1,0 +1,135 @@
+id,key,type,multi,indexed,solr_attr,ee,desc,parent
+1,id,str,false,true,stored,UniqueId,Id of the document,0
+2,oclc_number,hash,false,,,,Collection of OCLC Numbers associated with thing,0
+3,value,str,false,true,stored,OCLCNumber,OCLC Number,2
+4,old,str,true,true,stored,,Array of old oclc numbers,2
+5,ead_id,str,false,,stored,EAD ID,EAD ids,0
+6,local_id,hash,false,,,,Collection of Local Identification numbers associated with the thing,0
+7,value,str,false,true,stored,LocalId,Primary Local Id,6
+8,other,str,true,true,stored,Local System Number,Catch all for other local identifiers,6
+9,syndetics_id,str,true,true,stored,Syndetics ISBN,"IDs to use for merging Syndetics data, can also be UPC for media formats
+should be multivalued to increase opportunity for matching on different ISBNs",0
+10,rollup_id,str,false,,,Rollup ID,,0
+11,publication_year,i,false,true,stored-sort,"PubDateSort, Publication Year",Publication Year,0
+12,copyright_date,dt,true,true,stored,Copyright,Copyright date,0
+13,cataloged_date,dt,false,true,stored,,,0
+14,lang_code,str,false,,,,3 character ISO code,0
+15,language,str,false,true,stored,,Human readable language associated with ISO code,0
+16,isbn,hash,false,,,,Collection of ISBNs,0
+17,primary,hash,true,,,,would usually come from 020$a,16
+18,number,i,false,true,,,"numeric portion only, indexed, can be used for Syndetics ID",17
+19,qualifying_info,str,false,true,stored,,"any other data in the field, if present combined, the parent elements create a display ISBN field",17
+20,other,hash,true,,,,"would probably come from 020$z and/or 776$z, etc. ",16
+21,number,i,false,true,,,"numeric portion only, indexed
+could be used as Syndetics ID to increase probability of match, but runs risk or false match (sometimes used for incorrect ISBNs printed on an item)",20
+22,qualifying_info,str,false,true,stored,,"combined, the parent elements create a display ISBN field, which can always be displayed after the primary ISBNS",20
+23,issn,hash,false,,,,Collection of ISSNs,0
+24,primary,str,true,true,stored,ISSN,Primary ISSNs,23
+25,linking,str,true,true,stored,Linking ISSN,Linking ISSNs,23
+26,series,str,true,true,stored,Series ISSN,Series ISSNs,23
+27,publisher_number,i,true,true,stored,Publisher Number,,0
+28,publisher_etc,hash,true,,,"Publisher, Distributor, Manufacturer, Producer",,0
+29,name,gvo,true,,,,,28
+30,type,str,true,,,,,28
+31,imprint,hash,true,,,"Imprint, Sound Recording Imprint, Production Statement, Manufacturer Statement, Distribution Statement, Copyright Statement",,0
+32,value,gvo,true,,,,,31
+33,type,str,true,,,,,31
+34,authors,hash,false,,,,,0
+35,main,gvo,true,,,,,34
+36,other,gvo,true,,,,,34
+37,directors,gvo,true,,,,,34
+38,uncontrolled,gvo,true,,,,,34
+39,title,hash,false,,,,"Endeca data model also has separate ee:Journal Earlier Title and ee:Journal Later Title elements
+See if anything can be done to reduce redundancy of fields mapped to journal title indexes
+No need for separate uniform_main and uniform_journal when both come from 245, etc.?",0
+40,main,gvo,false,,,Main Title,Main title,39
+41,sort,str,false,true,sort,Title Sort,Sort version of main title,39
+42,uniform,gvo,false,,,,Uniform titles from 240 or 130,39
+45,collective,gvo,false,,,Collective Uniform Title,Collective Uniform Title,39
+46,journal,gvo,true,,,Journal Title Index,,39
+47,abbreviation,gvo,true,,,"Journal Title Abbreviation, Title Index",,39
+48,translation,gvo,true,,,Other Title Translation,,39
+49,analytical,gvo,true,,,,"any 7XX controlled author field $t or 730/740 $a if and only if 2nd indicator = 2
+This means the thing described CONTAINS the title recorded -- generally only used when it's a few works combined/cataloged in one volume, so this doesn't get to the level of Tables of Contents title indexing
+These should be displayed differently (as ""Also contains:"" or something) and possibly weighted differently for relevance.",39
+50,alternate,gvo,true,,,,Some Uniform Title and Varying Titles and Other Titles should map here only when 2nd indicator != 2,39
+51,earlier,gvo,true,,,"Journal Earlier Title, Earlier Title",separate elements needed for proper display and possibly relevance ranking,39
+52,later,gvo,true,,,"Journal Later Title, Later Title",separate elements needed for proper display and possibly relevance ranking,39
+53,notes,hash,false,,,,,0
+54,indexed,t,true,true,stored,,,53
+55,serials_summary,t,true,true,stored,,,53
+56,additional,str,true,false,stored,,,53
+57,url,hash,true,,,,,0
+58,href,str,false,true,stored,,,57
+59,rel,str,false,false,stored,,,57
+60,text,t,false,true,stored,,,57
+61,linking,hash,false,,,,,0
+62,main_series,hash,true,,,,,61
+63,value,t,false,true,stored,,,62
+64,isn,str,false,true,stored,,,62
+65,subseries,hash,true,,,,,61
+66,value,t,false,true,stored,,,65
+67,isn,str,false,true,stored,,,65
+68,translation_of,hash,true,,,,,61
+69,value,t,false,true,stored,,,68
+70,isn,str,false,true,stored,,,68
+71,translated_as,hash,true,,,,,61
+72,value,t,false,true,stored,,,71
+73,isn,str,false,true,stored,,,71
+74,has_supplement,hash,true,,,,,61
+75,value,t,false,true,stored,,,74
+76,isn,str,false,true,stored,,,74
+77,supplement_to,hash,true,,,,,61
+78,value,t,false,true,stored,,,77
+79,isn,str,false,true,stored,,,77
+80,host_item,hash,true,,,,,61
+81,value,t,false,true,stored,,,80
+82,isn,str,false,true,stored,,,80
+83,constituent_unit,hash,true,,,,,61
+84,value,t,false,true,stored,,,83
+85,isn,str,false,true,stored,,,83
+86,added_entry,hash,true,,,,,61
+87,value,t,false,true,stored,,,86
+88,isn,str,false,true,stored,,,86
+89,format,f,true,true,stored,,,0
+90,subjects,pp,true,true,stored,,,0
+91,statement_of_responsibility,gvo,true,,,,,0
+92,edition,gvo,true,,,Edition,,0
+93,cartographic_data,t,true,true,stored,Cartographic data,,0
+94,frequency,hash,false,,,,,0
+95,current,str,false,false,,Current Frequency,,94
+96,former,str,true,false,,Former Frequency,,94
+97,description,hash,false,,,,,0
+98,general,t,true,true,stored,Material,,97
+99,sound,t,true,true,stored,Material Details,,97
+100,projection,t,true,true,stored,Material Details,,97
+101,video,t,true,true,stored,Material Details,,97
+102,digital_file,t,true,true,stored,Material Details,,97
+103,organization,t,true,true,stored,,,0
+104,volumes,t,true,true,stored,,,0
+105,series,hash,false,,,,,0
+106,main,gvo,true,,,,,105
+107,personal,gvo,true,,,,,105
+108,corporate,gvo,true,,,,,105
+109,meeting,gvo,true,,,,,105
+110,uniform,gvo,true,,,,,105
+111,source_of_acquisition,t,true,true,stored,,,0
+112,related_collections,t,true,true,stored,,,0
+113,biographical_sketch,t,true,true,stored,,,0
+114,most_recent,t,true,true,stored,,,0
+115,holdings_note,t,true,true,stored,,,0
+116,items,hash,true,,,,,0
+117,barcode,str,true,true,stored,,,116
+118,copy_number,str,true,true,stored,,,116
+119,due_date,dt,true,true,stored,,,116
+120,ils_id,str,true,false,,,,116
+121,location,f,true,true,stored,,,116
+122,note,t,true,true,stored,,,116
+123,checkouts,i,true,false,,,,116
+124,call_number_tag,f,true,true,stored,,,116
+125,classification_number,lccn,true,true,stored,,,116
+126,status,str,true,false,,,,116
+127,type,str,true,false,,,,116
+128,volume,str,true,false,stored,,,116
+129,owner,f,false,true,true,,,0
+130,institution,f,true,true,stored,,,0

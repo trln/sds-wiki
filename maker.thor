@@ -16,7 +16,7 @@ def generate_csv_structure(attributes, persist, parent)
 end
 
 
-class Flopper < Thor
+class Maker < Thor
 
   ###############
   # yml to csv

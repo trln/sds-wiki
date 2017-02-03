@@ -281,8 +281,8 @@
   desc: 
   attributes:
   - id: '32'
-    key: display
-    type: str
+    key: value
+    type: gvo
     multi: true
     indexed: false
     solr_attr: 
@@ -322,7 +322,7 @@
     ee: 
     desc: 
   - id: '37'
-    key: director
+    key: directors
     type: gvo
     multi: true
     indexed: false
@@ -368,39 +368,20 @@
     desc: Sort version of main title
   - id: '42'
     key: uniform
-    type: hash
+    type: gvo
     multi: false
     indexed: false
     solr_attr: 
     ee: 
-    desc: "Uniform titles\nUniform Title from 730 should be mapped to: \n- Varying
-      Titles if indicator 2 != 2\n- Analytical title (see below) if indicator 2 =
-      2"
-    attributes:
-    - id: '43'
-      key: main
-      type: gvo
-      multi: false
-      indexed: false
-      solr_attr: 
-      ee: Main Uniform Title
-      desc: Main Uniform Title
-    - id: '44'
-      key: journal
-      type: gvo
-      multi: false
-      indexed: false
-      solr_attr: 
-      ee: Journal Uniform Title
-      desc: Main Journal Uniform Title
-    - id: '45'
-      key: collective
-      type: gvo
-      multi: false
-      indexed: false
-      solr_attr: 
-      ee: Collective Uniform Title
-      desc: Collective Uniform Title
+    desc: Uniform titles from 240 or 130
+  - id: '45'
+    key: collective
+    type: gvo
+    multi: false
+    indexed: false
+    solr_attr: 
+    ee: Collective Uniform Title
+    desc: Collective Uniform Title
   - id: '46'
     key: journal
     type: gvo
@@ -475,7 +456,8 @@
     type: t
     multi: true
     indexed: true
-    solr_attr: 
+    solr_attr:
+    - stored
     ee: 
     desc: 
   - id: '55'
@@ -483,11 +465,12 @@
     type: t
     multi: true
     indexed: true
-    solr_attr: 
+    solr_attr:
+    - stored
     ee: 
     desc: 
   - id: '56'
-    key: display
+    key: additional
     type: str
     multi: true
     indexed: false
@@ -595,7 +578,7 @@
       ee: 
       desc: 
   - id: '68'
-    key: translation_of_title
+    key: translation_of
     type: hash
     multi: true
     indexed: false
@@ -622,7 +605,7 @@
       ee: 
       desc: 
   - id: '71'
-    key: translated_as_title
+    key: translated_as
     type: hash
     multi: true
     indexed: false
@@ -703,7 +686,7 @@
       ee: 
       desc: 
   - id: '80'
-    key: host_item_title
+    key: host_item
     type: hash
     multi: true
     indexed: false
@@ -730,7 +713,7 @@
       ee: 
       desc: 
   - id: '83'
-    key: constituent_unit_title
+    key: constituent_unit
     type: hash
     multi: true
     indexed: false
@@ -1130,3 +1113,21 @@
     - stored
     ee: 
     desc: 
+- id: '129'
+  key: owner
+  type: f
+  multi: false
+  indexed: true
+  solr_attr:
+  - 'true'
+  ee: 
+  desc: 
+- id: '130'
+  key: institution
+  type: f
+  multi: true
+  indexed: true
+  solr_attr:
+  - stored
+  ee: 
+  desc: 
