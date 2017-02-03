@@ -5,47 +5,26 @@ require 'json'
 require 'yaml'
 require 'csv'
 
-def generate_csv_structure(attributes, persist, parent)
-  attributes.each do |attr|
-    persist[:csv] << %W(#{persist[:increment]} #{attr[:key]} #{attr[:type]} #{attr[:multi]} #{attr[:solr][:type]} #{attr[:solr][:attr].join('-')} #{attr[:ee]} #{attr[:desc]} #{parent})
-    if attr[:type] == 'hash'
-      generate_argot_array(attr[:attributes], persist, persist[:increment])
-    end
-    persist[:increment] = persist[:increment] + 1
-  end
-end
+class MakerHelper
 
+  def self.nest_argot_field(argot, field, parent_id)
 
-class Maker < Thor
-
-  ###############
-  # yml to csv
-  ###############
-  desc "to_csv <input> <output>", "create a csv from argot yaml file"
-
-  def to_csv(input, output)
-
-    if File.exist?(input)
-
-      argot = YAML.load_file(input)
-      increment = 1
-
-      persist = { :increment => 1, :csv => Array.new }
-      generate_csv_structure(argot,persist,0)
-
-      CSV.open(output, "wb") do |csv|
-        csv << %w(id key type multi solr_type solr_attr ee desc parent)
-        persist[:csv].each do |field|
-          csv << field
+    argot.each do |a,idx|
+      if a["id"] == parent_id
+        if !a["attributes"].is_a?(Array)
+          a["attributes"] = Array.new
         end
+        a["attributes"] << field
+      elsif a["attributes"].is_a?(Array)
+        MakerHelper::nest_argot_field(a["attributes"], field, parent_id)
       end
 
-    else
-      puts "File does not exist"
+      #argot.delete_at(idx)
+      #argot.insert(idx,a)
     end
   end
 
-  def generate_csv_structure(attributes, persist, parent=nil)
+  def self.generate_csv_structure(attributes, persist, parent=nil)
     attributes.each do |attr|
 
       add_array = Array.new
@@ -66,9 +45,75 @@ class Maker < Thor
 
       if attr["type"] == "hash"
         if attr["attributes"]
-          generate_csv_structure(attr["attributes"], persist, parent_state)
+          MakerHelper::generate_csv_structure(attr["attributes"], persist, parent_state)
         end
       end
+    end
+  end
+
+  def self.create_solr_fields(collection, fields, expanding_key = nil)
+    fields.each do |field|
+      new_key = expanding_key ? expanding_key + "_" + field["key"] : field["key"]
+
+      if new_key.end_with?("_value")
+        new_key = new_key.sub("_value","")
+      end
+
+      if field["attributes"]
+        MakerHelper::create_solr_fields(collection, field["attributes"], new_key)
+      else
+        if field["multi"]
+          new_key = new_key + "_a"
+        end
+
+        if field["type"] == "gvo"
+          field["indexed"] == true
+          if field["solr_attr"]
+            field["solr_attr"] << "stored"
+          else
+            field["solr_attr"] = ["stored"]
+          end
+        end
+
+        if field["indexed"]
+          collection[new_key] = {
+            "type" => field["type"] == "gvo" ? "t" : field["type"],
+            "attr" => field["solr_attr"]
+          }
+        end
+      end
+    end
+  end
+
+end
+
+
+class Maker < Thor
+
+  ###############
+  # yml to csv
+  ###############
+  desc "to_csv <input> <output>", "create a csv from argot yaml file"
+
+  def to_csv(input, output)
+
+    if File.exist?(input)
+
+      argot = YAML.load_file(input)
+      increment = 1
+
+      persist = { :increment => 1, :csv => Array.new }
+      MakerHelper::generate_csv_structure(argot,persist,0)
+
+      CSV.open(output, "wb") do |csv|
+        csv << %w(id key type multi solr_type solr_attr ee desc parent)
+        persist[:csv].each do |field|
+          csv << field
+        end
+      end
+
+    else
+      puts "File does not exist"
     end
   end
 
@@ -99,7 +144,7 @@ class Maker < Thor
           "desc" => field[7]
         }
         if field[8] != "0"
-          nest_argot_field(argot,argot_field,field[8])
+          MakerHelper::nest_argot_field(argot,argot_field,field[8])
         else
           argot << argot_field
         end
@@ -112,20 +157,27 @@ class Maker < Thor
     end
   end
 
-  def nest_argot_field(argot, field, parent_id)
+  
 
-    argot.each do |a,idx|
-      if a["id"] == parent_id
-        if !a["attributes"].is_a?(Array)
-          a["attributes"] = Array.new
-        end
-        a["attributes"] << field
-      elsif a["attributes"].is_a?(Array)
-        nest_argot_field(a["attributes"], field, parent_id)
-      end
+  ###############
+  # yml to solr_fields config file
+  ###############
+  desc "to_solr_fields <input> <output>", "create a solr fields config file from argot yaml"
 
-      #argot.delete_at(idx)
-      #argot.insert(idx,a)
+  def to_solr_fields(input, output)
+
+    if File.exist?(input)
+
+      argot = YAML.load_file(input)
+      
+      solr_fields = {}
+
+      MakerHelper::create_solr_fields(solr_fields, argot)
+
+      File.open(output, 'w') {|f| f.write solr_fields.to_yaml }
+
+    else
+      puts "File does not exist"
     end
   end
 
