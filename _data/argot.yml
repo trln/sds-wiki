@@ -129,7 +129,7 @@
 - id: '15'
   key: language
   type: str
-  multi: false
+  multi: true
   indexed: true
   solr_attr:
   - stored
