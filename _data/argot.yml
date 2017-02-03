@@ -128,7 +128,7 @@
   desc: 3 character ISO code
 - id: '15'
   key: language
-  type: str
+  type: f
   multi: true
   indexed: true
   solr_attr:
