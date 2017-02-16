@@ -156,7 +156,7 @@
     - id: '18'
       key: number
       type: i
-      multi: false
+      multi: true
       indexed: true
       solr_attr: 
       ee: 
@@ -164,7 +164,7 @@
     - id: '19'
       key: qualifying_info
       type: str
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -183,7 +183,7 @@
     - id: '21'
       key: number
       type: i
-      multi: false
+      multi: true
       indexed: true
       solr_attr: 
       ee: 
@@ -193,7 +193,7 @@
     - id: '22'
       key: qualifying_info
       type: str
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -369,7 +369,7 @@
   - id: '42'
     key: uniform
     type: gvo
-    multi: false
+    multi: true
     indexed: false
     solr_attr: 
     ee: 
@@ -377,7 +377,7 @@
   - id: '45'
     key: collective
     type: gvo
-    multi: false
+    multi: true
     indexed: false
     solr_attr: 
     ee: Collective Uniform Title
@@ -490,7 +490,7 @@
   - id: '58'
     key: href
     type: str
-    multi: false
+    multi: true
     indexed: true
     solr_attr:
     - stored
@@ -499,7 +499,7 @@
   - id: '59'
     key: rel
     type: str
-    multi: false
+    multi: true
     indexed: false
     solr_attr:
     - stored
@@ -508,7 +508,7 @@
   - id: '60'
     key: text
     type: t
-    multi: false
+    multi: true
     indexed: true
     solr_attr:
     - stored
@@ -535,7 +535,7 @@
     - id: '63'
       key: value
       type: t
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -544,7 +544,7 @@
     - id: '64'
       key: isn
       type: str
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -562,7 +562,7 @@
     - id: '66'
       key: value
       type: t
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -571,7 +571,7 @@
     - id: '67'
       key: isn
       type: str
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -589,7 +589,7 @@
     - id: '69'
       key: value
       type: t
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -598,7 +598,7 @@
     - id: '70'
       key: isn
       type: str
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -616,7 +616,7 @@
     - id: '72'
       key: value
       type: t
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -625,7 +625,7 @@
     - id: '73'
       key: isn
       type: str
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -643,7 +643,7 @@
     - id: '75'
       key: value
       type: t
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -652,7 +652,7 @@
     - id: '76'
       key: isn
       type: str
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -670,7 +670,7 @@
     - id: '78'
       key: value
       type: t
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -679,7 +679,7 @@
     - id: '79'
       key: isn
       type: str
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -697,7 +697,7 @@
     - id: '81'
       key: value
       type: t
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -706,7 +706,7 @@
     - id: '82'
       key: isn
       type: str
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -724,7 +724,7 @@
     - id: '84'
       key: value
       type: t
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -733,7 +733,7 @@
     - id: '85'
       key: isn
       type: str
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -751,7 +751,7 @@
     - id: '87'
       key: value
       type: t
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -760,7 +760,7 @@
     - id: '88'
       key: isn
       type: str
-      multi: false
+      multi: true
       indexed: true
       solr_attr:
       - stored
@@ -1119,7 +1119,7 @@
   multi: false
   indexed: true
   solr_attr:
-  - 'true'
+  - stored
   ee: 
   desc: 
 - id: '130'
