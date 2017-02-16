@@ -238,7 +238,7 @@
     desc: Series ISSNs
 - id: '27'
   key: publisher_number
-  type: i
+  type: str
   multi: true
   indexed: true
   solr_attr:

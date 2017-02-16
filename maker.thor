@@ -55,6 +55,7 @@ class MakerHelper
     fields.each do |field|
       indexed = field["indexed"] or false
       solr_attr = field["solr_attr"].nil? ? [] : field["solr_attr"] 
+      multi = field["multi"] or false
       new_key = expanding_key ? expanding_key + "_" + field["key"] : field["key"]
 
       if new_key.end_with?("_value")
@@ -64,12 +65,9 @@ class MakerHelper
       if field["attributes"]
         MakerHelper::create_solr_fields(collection, field["attributes"], new_key)
       else
-        if field["multi"]
-          new_key = new_key + "_a"
-        else
+        if !multi
           solr_attr << "single"
         end
-
 
         if field["type"] == "gvo"
           indexed = true
