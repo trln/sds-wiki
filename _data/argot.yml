@@ -101,8 +101,8 @@
   ee: PubDateSort, Publication Year
   desc: Publication Year
 - id: '12'
-  key: copyright_date
-  type: dt
+  key: copyright_year
+  type: i
   multi: true
   indexed: true
   solr_attr:
