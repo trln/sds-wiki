@@ -155,7 +155,7 @@
     attributes:
     - id: '18'
       key: number
-      type: i
+      type: str
       multi: true
       indexed: true
       solr_attr: 
@@ -182,7 +182,7 @@
     attributes:
     - id: '21'
       key: number
-      type: i
+      type: str
       multi: true
       indexed: true
       solr_attr: 
